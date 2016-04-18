@@ -26,59 +26,59 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  transition-property: top;
+  /* transition-property: top; */
   transition-duration: .5s; }
   .container_big .brand {
-    font-size: 72px; }
+    font-size: 64.8px; }
   .container_big h1 {
-    font-size: 48px; }
+    font-size: 43.2px; }
   .container_big h2 {
-    font-size: 36px;
+    font-size: 32.4px;
     margin: 8px 0; }
   .container_big h3 {
-    font-size: 24px;
+    font-size: 21.6px;
     margin: 8px 0; }
   .container_big p {
-    font-size: 18px; }
+    font-size: 16.2px; }
   .container_big .link {
-    font-size: 24px;
-    line-height: 36px; }
+    font-size: 21.6px;
+    line-height: 32.4px; }
   .container_normal .brand {
-    font-size: 54px; }
+    font-size: 50.4px; }
   .container_normal h1 {
-    font-size: 36px; }
+    font-size: 33.6px; }
   .container_normal h2 {
-    font-size: 27px;
+    font-size: 25.2px;
     margin: 8px 0; }
   .container_normal h3 {
-    font-size: 18px;
+    font-size: 16.8px;
     margin: 8px 0; }
   .container_normal p {
-    font-size: 13.5px; }
+    font-size: 12.6px; }
   .container_normal .link {
-    font-size: 18px;
-    line-height: 27px; }
+    font-size: 16.8px;
+    line-height: 25.2px; }
   .container_small .brand {
-    font-size: 21.6px; }
+    font-size: 43.2px; }
   .container_small h1 {
-    font-size: 14.4px; }
+    font-size: 28.8px; }
   .container_small h2 {
-    font-size: 10.8px;
+    font-size: 21.6px;
     margin: 8px 0; }
   .container_small h3 {
-    font-size: 7.2px;
+    font-size: 14.4px;
     margin: 8px 0; }
   .container_small p {
-    font-size: 5.4px; }
+    font-size: 10.8px; }
   .container_small .link {
-    font-size: 7.2px;
-    line-height: 10.8px; }
+    font-size: 14.4px;
+    line-height: 21.6px; }
 
 /* section */
 .section {
   width: 100%; }
   .section_page {
-    height: 100px;
+    height: 2000px;
     position: relative; }
   .section_orange {
     background: #f06d06;
@@ -125,15 +125,26 @@ body {
       border: solid 2px;
       padding: 4px 20px;
       text-align: center; }
+    .section__try_soft24 {
+      width: 100%;
+      padding-left: 100px; }
   .section__table {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    border-collapse: collapse;
     width: 80%; }
-    .section__table td {
-      vertical-align: top;
+    .section__table_quotes td {
       padding-left: 20px;
       padding-right: 20px; }
+  .section__organization, .section__quote {
+    vertical-align: top; }
+  .section__cell-tarif {
+    vertical-align: top;
+    text-align: center; }
+
+.cell_right-border {
+  border-right: 1px dotted #000; }
 
 /* link */
 .link {
@@ -145,6 +156,9 @@ body {
     padding: 4px 20px;
     text-align: center;
     margin-right: 20px; }
+  .link_soft24 {
+    text-decoration: none;
+    color: #999; }
 
 /* scroller */
 .scroller {
