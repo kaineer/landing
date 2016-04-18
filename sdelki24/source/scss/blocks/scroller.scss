@@ -1,0 +1,69 @@
+/* scroller */
+$scroller-width: 30px;
+$scroller-item-small: 5px;
+$scroller-item-big: 20px;
+$scroller-item-bold: $scroller-item-big * 0.6;
+$scroller-margin: ($scroller-width - $scroller-item-big) / 2;
+
+.scroller {
+  &-base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: transparent;
+
+    z-index: -1;
+  }
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  right: 20px;
+
+  width: $scroller-width;
+  background: transparent;
+
+  &__item {
+    position: relative;
+
+    width: $scroller-item-big;
+    height: $scroller-item-big;
+    margin: $scroller-margin;
+
+    cursor: pointer;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      opacity: .8;
+
+      width: $scroller-item-small;
+      height: $scroller-item-small;
+
+      margin-left: -$scroller-item-small / 2;
+      margin-top: -$scroller-item-small / 2;
+
+      border-radius: 50%;
+
+      background: #000;
+
+      transition-property: all;
+      transition-duration: .3s;
+    }
+
+    &:hover:after, &_selected:after {
+      width: $scroller-item-bold;
+      height: $scroller-item-bold;
+
+      margin-left: -$scroller-item-bold / 2;
+      margin-top: -$scroller-item-bold / 2;
+    }
+  }
+}

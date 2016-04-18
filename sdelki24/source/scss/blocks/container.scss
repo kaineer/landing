@@ -1,0 +1,82 @@
+/* container */
+
+.container {
+  position: relative;
+  top: 0;
+  left: 0;
+
+  transition-property: top;
+  transition-duration: .5s;
+
+  &_big {
+    .brand {
+      font-size: 72px;
+    }
+    h1 {
+      font-size: 48px;
+    }
+    h2 {
+      font-size: 36px;
+      margin: 8px 0;
+    }
+    h3 {
+      font-size: 24px;
+      margin: 8px 0;
+    }
+    p {
+      font-size: 18px;
+    }
+    .link {
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+
+  &_normal {
+    .brand {
+      font-size: 72px * $normal-coef;
+    }
+    h1 {
+      font-size: 48px * $normal-coef;
+    }
+    h2 {
+      font-size: 36px * $normal-coef;
+      margin: 8px 0;
+    }
+    h3 {
+      font-size: 24px * $normal-coef;
+      margin: 8px 0;
+    }
+    p {
+      font-size: 18px * $normal-coef;
+    }
+    .link {
+      font-size: 24px * $normal-coef;
+      line-height: 36px * $normal-coef;
+    }
+  }
+
+  &_small {
+    .brand {
+      font-size: 72px * $small-coef;
+    }
+    h1 {
+      font-size: 48px * $small-coef;
+    }
+    h2 {
+      font-size: 36px * $small-coef;
+      margin: 8px 0;
+    }
+    h3 {
+      font-size: 24px * $small-coef;
+      margin: 8px 0;
+    }
+    p {
+      font-size: 18px * $small-coef;
+    }
+    .link {
+      font-size: 24px * $small-coef;
+      line-height: 36px * $small-coef;
+    }
+  }
+}
