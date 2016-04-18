@@ -5,30 +5,30 @@
   top: 0;
   left: 0;
 
-  transition-property: top;
+  /* transition-property: top; */
   transition-duration: .5s;
 
   &_big {
     .brand {
-      font-size: 72px;
+      font-size: 72px * $big-coef;
     }
     h1 {
-      font-size: 48px;
+      font-size: 48px * $big-coef;
     }
     h2 {
-      font-size: 36px;
+      font-size: 36px * $big-coef;
       margin: 8px 0;
     }
     h3 {
-      font-size: 24px;
+      font-size: 24px * $big-coef;
       margin: 8px 0;
     }
     p {
-      font-size: 18px;
+      font-size: 18px * $big-coef;
     }
     .link {
-      font-size: 24px;
-      line-height: 36px;
+      font-size: 24px * $big-coef;
+      line-height: 36px * $big-coef;
     }
   }
 

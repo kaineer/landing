@@ -3,7 +3,7 @@
   width: 100%;
 
   &_page {
-    height: 100px; // default height
+    height: 2000px; // default height
     position: relative;
   }
 
@@ -75,6 +75,11 @@
       padding: 4px 20px;
       text-align: center;
     }
+
+    &_soft24 {
+      width: 100%;
+      padding-left: 100px;
+    }
   }
 
   &__table {
@@ -82,12 +87,26 @@
     left: 50%;
     transform: translateX(-50%);
 
+    border-collapse: collapse;
+
     width: 80%;
 
-    td {
-      vertical-align: top;
+    &_quotes td {
       padding-left: 20px;
       padding-right: 20px;
     }
   }
+
+  &__organization, &__quote {
+    vertical-align: top;
+  }
+
+  &__cell-tarif {
+    vertical-align: top;
+    text-align: center;
+  }
+}
+
+.cell_right-border {
+  border-right: 1px dotted #000;
 }

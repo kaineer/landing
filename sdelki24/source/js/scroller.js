@@ -14,7 +14,7 @@ module.exports = function() {
   scroller.innerHTML = html;
 
   scroller.addEventListener("click", function(evt) {
-    var idx = evt.target.dataset["idx"];
+    var idx = evt.target.dataset["idx"] * 1;
     pages.go(idx);
   });
 };

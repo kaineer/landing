@@ -46,7 +46,7 @@ var resizeHandler = function() {
     section.style.height = px(page.height());
   });
 
-  page.fix();
+  page.fixForce();
 
   page.media(minSize);
 };
@@ -61,7 +61,7 @@ var scrollByDirection = function(direction) {
     canScroll = false;
     setTimeout(function() {
       canScroll = true;
-    }, 500);
+    }, 700);
   }
 };
 
@@ -74,17 +74,34 @@ var scrollHandler = function(evt) {
 var keyupHandler = function(evt) {
   evt.preventDefault();
 
+console.log(evt.which);
+
   if([Key.SPACE, Key.DOWN].indexOf(evt.which) > -1) {
     scrollByDirection(Direction.DOWN);
   } else if([Key.UP].indexOf(evt.which) > -1) {
     scrollByDirection(Direction.UP);
+  } else if(evt.which == Key.HOME) {
+    page.go(0);
+  } else if(evt.which == Key.END) {
+    page.last();
   }
 };
+
+var clickTryHandler = function(evt) {
+  evt.preventDefault();
+
+  page.last();
+}
 
 module.exports = function() {
   window.addEventListener("resize", resizeHandler);
   window.addEventListener(wheelEventType, scrollHandler);
   window.addEventListener("keyup", keyupHandler);
+
+  var links = [].slice.call(document.querySelectorAll(".section__try-link"));
+  links.forEach(function(link) {
+    link.addEventListener("click", clickTryHandler);
+  });
 
   resizeHandler();
 };
