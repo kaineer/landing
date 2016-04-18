@@ -1,0 +1,189 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto; }
+
+body {
+  position: relative; }
+
+.italics {
+  font-style: italic; }
+
+.top-spaced {
+  padding-top: 40px; }
+
+.quote {
+  font-style: italic; }
+
+.quote_title {
+  font-style: italic; }
+
+/* container */
+.container {
+  position: relative;
+  top: 0;
+  left: 0;
+  transition-property: top;
+  transition-duration: .5s; }
+  .container_big .brand {
+    font-size: 72px; }
+  .container_big h1 {
+    font-size: 48px; }
+  .container_big h2 {
+    font-size: 36px;
+    margin: 8px 0; }
+  .container_big h3 {
+    font-size: 24px;
+    margin: 8px 0; }
+  .container_big p {
+    font-size: 18px; }
+  .container_big .link {
+    font-size: 24px;
+    line-height: 36px; }
+  .container_normal .brand {
+    font-size: 54px; }
+  .container_normal h1 {
+    font-size: 36px; }
+  .container_normal h2 {
+    font-size: 27px;
+    margin: 8px 0; }
+  .container_normal h3 {
+    font-size: 18px;
+    margin: 8px 0; }
+  .container_normal p {
+    font-size: 13.5px; }
+  .container_normal .link {
+    font-size: 18px;
+    line-height: 27px; }
+  .container_small .brand {
+    font-size: 21.6px; }
+  .container_small h1 {
+    font-size: 14.4px; }
+  .container_small h2 {
+    font-size: 10.8px;
+    margin: 8px 0; }
+  .container_small h3 {
+    font-size: 7.2px;
+    margin: 8px 0; }
+  .container_small p {
+    font-size: 5.4px; }
+  .container_small .link {
+    font-size: 7.2px;
+    line-height: 10.8px; }
+
+/* section */
+.section {
+  width: 100%; }
+  .section_page {
+    height: 100px;
+    position: relative; }
+  .section_orange {
+    background: #f06d06;
+    color: #333; }
+    .section_orange .link {
+      border-color: #333;
+      color: #333; }
+      .section_orange .link:hover {
+        border-color: #666;
+        color: #666; }
+    .section_orange .quote {
+      color: #666666; }
+  .section_white {
+    background: #fff;
+    color: #000; }
+    .section_white .link {
+      border-color: #000;
+      color: #000; }
+      .section_white .link:hover {
+        border-color: #444;
+        color: #444; }
+    .section_white .quote {
+      color: #333333; }
+  .section__top {
+    position: relative;
+    width: 100%;
+    top: 40px;
+    text-align: right; }
+  .section__middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center; }
+  .section__try {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%); }
+    .section__try-link {
+      text-decoration: none;
+      display: block;
+      border: solid 2px;
+      padding: 4px 20px;
+      text-align: center; }
+  .section__table {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; }
+    .section__table td {
+      vertical-align: top;
+      padding-left: 20px;
+      padding-right: 20px; }
+
+/* link */
+.link {
+  transition-property: color border-color;
+  transition-duration: .2s   .2s; }
+  .link_button {
+    text-decoration: none;
+    border: solid 2px;
+    padding: 4px 20px;
+    text-align: center;
+    margin-right: 20px; }
+
+/* scroller */
+.scroller {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  width: 30px;
+  background: transparent; }
+  .scroller-base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: -1; }
+  .scroller__item {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    cursor: pointer; }
+    .scroller__item:after {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: .8;
+      width: 5px;
+      height: 5px;
+      margin-left: -2.5px;
+      margin-top: -2.5px;
+      border-radius: 50%;
+      background: #000;
+      transition-property: all;
+      transition-duration: .3s; }
+    .scroller__item:hover:after, .scroller__item_selected:after {
+      width: 12px;
+      height: 12px;
+      margin-left: -6px;
+      margin-top: -6px; }
