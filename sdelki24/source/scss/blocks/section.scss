@@ -68,12 +68,20 @@
     left: 50%;
     transform: translateX(-50%);
 
+    &_front {
+      bottom: 180px;
+    }
+
     &-link {
       text-decoration: none;
       display: block;
       border: solid 2px;
       padding: 4px 20px;
       text-align: center;
+
+      &_orange {
+        background: #f06d06;
+      }
     }
 
     &_soft24 {
