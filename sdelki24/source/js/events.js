@@ -2,6 +2,7 @@ var px = require("./px");
 var page = require("./page");
 var canScroll = true;
 var Key = require("./keys");
+var hashes = require("./hashes");
 
 var wheelEventType =
     (/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
@@ -46,7 +47,7 @@ var resizeHandler = function() {
     section.style.height = px(page.height());
   });
 
-  page.fixForce();
+  page.fix();
 
   page.media(minSize);
 };
@@ -74,8 +75,6 @@ var scrollHandler = function(evt) {
 var keyupHandler = function(evt) {
   evt.preventDefault();
 
-console.log(evt.which);
-
   if([Key.SPACE, Key.DOWN].indexOf(evt.which) > -1) {
     scrollByDirection(Direction.DOWN);
   } else if([Key.UP].indexOf(evt.which) > -1) {
@@ -90,13 +89,27 @@ console.log(evt.which);
 var clickTryHandler = function(evt) {
   evt.preventDefault();
 
-  page.last();
+  location = "#register";
+};
+
+var hashchangeHandler = function(evt) {
+  changePageByHash(false);
+};
+
+var changePageByHash = function(flag) {
+  var hash = location.hash.substr(1);
+  var idx = hashes.indexOf(hash);
+
+  if(idx > -1) {
+    page.go(idx, flag);
+  }
 }
 
 module.exports = function() {
   window.addEventListener("resize", resizeHandler);
   window.addEventListener(wheelEventType, scrollHandler);
   window.addEventListener("keyup", keyupHandler);
+  window.addEventListener("hashchange", hashchangeHandler);
 
   var links = [].slice.call(document.querySelectorAll(".section__try-link"));
   links.forEach(function(link) {
@@ -104,4 +117,5 @@ module.exports = function() {
   });
 
   resizeHandler();
+  changePageByHash(true);
 };

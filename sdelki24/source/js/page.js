@@ -4,6 +4,7 @@ var pages = null;
 var current = 0;
 var container = document.querySelector(".container");
 var scroller = document.querySelector(".scroller");
+var hashes = require("./hashes");
 
 var bigBreakpoint = 850;
 var smallBreakpoint = 660;
@@ -37,17 +38,24 @@ module.exports = {
     if(current < this.all().length - 1) {
       current++;
     }
-    this.slide();
+    this.fixHash();
   },
   up: function() {
     if(current > 0) {
       current--;
     }
-    this.slide();
+    this.fixHash();
   },
-  go: function(idx) {
+  fixHash: function() {
+    location = "#" + hashes[current];
+  },
+  go: function(idx, quick) {
     current = idx;
-    this.slide();
+    if(quick) {
+      this.fixForce();
+    } else {
+      this.slide();
+    }
   },
   slide: function() {
     container.style.transitionProperty = "top";
@@ -64,7 +72,7 @@ module.exports = {
   },
   fixForce: function() {
     var saveProperties = container.style.transitionProperty;
-    container.style.transitionProperty = "none !important;";
+    container.style.transitionProperty = "none";
     this.fix();
     setTimeout(function() { container.style.transitionProperty = saveProperties; }, 600);
   },
