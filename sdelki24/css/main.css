@@ -81,15 +81,15 @@ body {
     position: relative; }
   .section_orange {
     background: #f06d06;
-    color: #333; }
+    color: #eee; }
     .section_orange .link {
-      border-color: #333;
-      color: #333; }
+      border-color: #eee;
+      color: #eee; }
       .section_orange .link:hover {
-        border-color: #666;
-        color: #666; }
+        border-color: #999;
+        color: #999; }
     .section_orange .quote {
-      color: #666666; }
+      color: white; }
   .section_white {
     background: #fff;
     color: #000; }
@@ -118,12 +118,16 @@ body {
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%); }
+    .section__try_front {
+      bottom: 180px; }
     .section__try-link {
       text-decoration: none;
       display: block;
       border: solid 2px;
       padding: 4px 20px;
       text-align: center; }
+      .section__try-link_orange {
+        background: #f06d06; }
     .section__try_soft24 {
       width: 100%;
       padding-left: 100px; }
