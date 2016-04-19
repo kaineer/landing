@@ -301,12 +301,13 @@
 
 	var scrollByDirection = function(direction) {
 	  if(direction != Direction.NONE && canScroll) {
+	    canScroll = false;
+
 	    switch(direction) {
 	      case Direction.UP: page.up(); break;
 	      case Direction.DOWN: page.down(); break;
 	    }
 
-	    canScroll = false;
 	    setTimeout(function() {
 	      canScroll = true;
 	    }, 700);
