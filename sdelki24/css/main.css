@@ -162,6 +162,8 @@ body {
   .link_soft24 {
     text-decoration: none;
     color: #999; }
+  .link_outer {
+    margin-right: 20px; }
 
 /* scroller */
 .scroller {
