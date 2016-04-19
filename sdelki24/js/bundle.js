@@ -48,7 +48,7 @@
 
 	window.onload = function() {
 	  __webpack_require__(2)();
-	  __webpack_require__(5)();
+	  __webpack_require__(6)();
 	};
 
 
@@ -83,12 +83,14 @@
 	//
 	var pages = __webpack_require__(3);
 
+	var hashes = __webpack_require__(5);
+
 	module.exports = function() {
 	  var count = pages.all().length;
 	  var html = "";
 
 	  for(var i = 0; i < count; ++i) {
-	    html += "<div class='scroller__item' data-idx='" + i + "'></div>";
+	    html += "<div class='scroller__item' data-hash='" + hashes[i] + "' data-idx='" + i + "'></div>";
 	  }
 
 	  var scroller = document.querySelector(".scroller");
@@ -96,8 +98,10 @@
 	  scroller.innerHTML = html;
 
 	  scroller.addEventListener("click", function(evt) {
-	    var idx = evt.target.dataset["idx"] * 1;
-	    pages.go(idx);
+	    // var idx = evt.target.dataset["idx"] * 1;
+	    // pages.go(idx);
+	    var hash = evt.target.dataset["hash"];
+	    location = "#" + hash;
 	  });
 	};
 
@@ -112,6 +116,7 @@
 	var current = 0;
 	var container = document.querySelector(".container");
 	var scroller = document.querySelector(".scroller");
+	var hashes = __webpack_require__(5);
 
 	var bigBreakpoint = 850;
 	var smallBreakpoint = 660;
@@ -145,17 +150,24 @@
 	    if(current < this.all().length - 1) {
 	      current++;
 	    }
-	    this.slide();
+	    this.fixHash();
 	  },
 	  up: function() {
 	    if(current > 0) {
 	      current--;
 	    }
-	    this.slide();
+	    this.fixHash();
 	  },
-	  go: function(idx) {
+	  fixHash: function() {
+	    location = "#" + hashes[current];
+	  },
+	  go: function(idx, quick) {
 	    current = idx;
-	    this.slide();
+	    if(quick) {
+	      this.fixForce();
+	    } else {
+	      this.slide();
+	    }
 	  },
 	  slide: function() {
 	    container.style.transitionProperty = "top";
@@ -172,7 +184,7 @@
 	  },
 	  fixForce: function() {
 	    var saveProperties = container.style.transitionProperty;
-	    container.style.transitionProperty = "none !important;";
+	    container.style.transitionProperty = "none";
 	    this.fix();
 	    setTimeout(function() { container.style.transitionProperty = saveProperties; }, 600);
 	  },
@@ -215,12 +227,29 @@
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+	var hashes = [
+	  "front",
+	  "features",
+	  "interface",
+	  "tarifs",
+	  "clients",
+	  "register"
+	];
+
+	module.exports = hashes;
+
+
+/***/ },
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var px = __webpack_require__(4);
 	var page = __webpack_require__(3);
 	var canScroll = true;
-	var Key = __webpack_require__(6);
+	var Key = __webpack_require__(7);
+	var hashes = __webpack_require__(5);
 
 	var wheelEventType =
 	    (/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
@@ -265,7 +294,7 @@
 	    section.style.height = px(page.height());
 	  });
 
-	  page.fixForce();
+	  page.fix();
 
 	  page.media(minSize);
 	};
@@ -293,8 +322,6 @@
 	var keyupHandler = function(evt) {
 	  evt.preventDefault();
 
-	console.log(evt.which);
-
 	  if([Key.SPACE, Key.DOWN].indexOf(evt.which) > -1) {
 	    scrollByDirection(Direction.DOWN);
 	  } else if([Key.UP].indexOf(evt.which) > -1) {
@@ -309,13 +336,27 @@
 	var clickTryHandler = function(evt) {
 	  evt.preventDefault();
 
-	  page.last();
+	  location = "#register";
+	};
+
+	var hashchangeHandler = function(evt) {
+	  changePageByHash(false);
+	};
+
+	var changePageByHash = function(flag) {
+	  var hash = location.hash.substr(1);
+	  var idx = hashes.indexOf(hash);
+
+	  if(idx > -1) {
+	    page.go(idx, flag);
+	  }
 	}
 
 	module.exports = function() {
 	  window.addEventListener("resize", resizeHandler);
 	  window.addEventListener(wheelEventType, scrollHandler);
 	  window.addEventListener("keyup", keyupHandler);
+	  window.addEventListener("hashchange", hashchangeHandler);
 
 	  var links = [].slice.call(document.querySelectorAll(".section__try-link"));
 	  links.forEach(function(link) {
@@ -323,11 +364,12 @@
 	  });
 
 	  resizeHandler();
+	  changePageByHash(true);
 	};
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	module.exports = {
