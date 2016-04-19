@@ -4,6 +4,8 @@ var canScroll = true;
 var Key = require("./keys");
 var hashes = require("./hashes");
 
+var screenshotHd = document.querySelector(".screenshot-hd");
+var screenshot   = document.querySelector(".screenshot");
 var wheelEventType =
     (/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
 
@@ -11,6 +13,10 @@ var Direction = {
   UP: 1,
   DOWN: 2,
   NONE: 0
+};
+
+var toggleVisibility = function(el, flag) {
+  el.style.display = flag ? "inline" : "none";
 };
 
 var domMouseScrollDirection = function(evt) {
@@ -50,6 +56,14 @@ var resizeHandler = function() {
   page.fix();
 
   page.media(minSize);
+
+  if(width < 1446 || height < 714) {
+    toggleVisibility(screenshotHd, false);
+    toggleVisibility(screenshot, true);
+  } else {
+    toggleVisibility(screenshotHd, true);
+    toggleVisibility(screenshot, false);
+  }
 };
 
 var scrollByDirection = function(direction) {
